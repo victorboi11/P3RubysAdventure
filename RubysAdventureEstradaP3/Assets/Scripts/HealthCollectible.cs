@@ -7,17 +7,13 @@ public class HealthCollectible : MonoBehaviour
    
     void OnTriggerEnter2D(Collider2D other)
     {
-          Debug.Log("Object that entered the trigger : " + other);
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
+        RubyController controller = other.GetComponent<RubyController>();
+        if (controller != null)
+        {
+            controller.ChangeHealth(1);
+            Destroy(gameObject);
+        }
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
